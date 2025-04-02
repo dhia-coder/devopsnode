@@ -5,22 +5,28 @@ services:
     image: mongo:4.2
     container_name: db
     restart: always
+    environment:
+      MONGO_INITDB_DATABASE: sustainafood
     ports:
-      - "27017:27017"
+      - "27017:27017" # Only needed if you want to access from host
     volumes:
+      - mongo-data:/data/db
       - ./data/dump:/dump
 
   app:
     build: .
-    image: localhost:8083/nodemongoapp:6.0
-    restart: always
+    image: localhost:8083/nodeapp:6.0
     container_name: back
+    restart: unless-stopped
     ports:
       - "3000:3000"
     depends_on:
       - db
+    environment:
+      - MONGODB_URI=mongodb://db:27017/sustainafood
     volumes:
-      - mongo-data:/data/db
+      - .:/app
+      - /app/node_modules
 
 volumes:
   mongo-data:
