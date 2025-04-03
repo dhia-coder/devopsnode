@@ -20,7 +20,7 @@ describe('✅ TEST SIGN IN SUR DONNEES EXISTANTES', () => {
   it('✅ Devrait se connecter avec un utilisateur existant', async () => {
     const res = await request(app).post('/users/login').send({
       email: "dhia@gmail.com", // Met ton email existant ici
-      password: "Dhiadhaw1234@"        // Met ton mot de passe correspondant
+      password: "1247777"        // Met ton mot de passe correspondant
     });
 
     console.log(res.body); // 🔹 Pour voir la réponse complète dans la console
