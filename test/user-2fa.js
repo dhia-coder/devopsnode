@@ -1,3 +1,4 @@
+//user-2fa.test.js
 const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../app'); // Adjust the path if needed
@@ -35,10 +36,10 @@ describe('✅ TEST Get User By ID (GET /users/details/:id)', () => {
   it('✅ Should retrieve an existing user by their valid ID', async () => {
     // The ID is now correctly set above, no need for the placeholder check.
 
-    const res = await request(app).get(`/users/details/${EXISTING_USER_ID}`);
+    const res = await request(app).get(/users/details/${EXISTING_USER_ID});
 
-    console.log(`GET /users/details/${EXISTING_USER_ID} Response Status:`, res.statusCode);
-    console.log(`GET /users/details/${EXISTING_USER_ID} Response Body:`, res.body);
+    console.log(GET /users/details/${EXISTING_USER_ID} Response Status:, res.statusCode);
+    console.log(GET /users/details/${EXISTING_USER_ID} Response Body:, res.body);
 
     // Assertions
     expect(res.statusCode).toBe(200); // Expect success
@@ -55,10 +56,10 @@ describe('✅ TEST Get User By ID (GET /users/details/:id)', () => {
   });
 
   it('❌ Should return 404 Not Found for a non-existent user ID', async () => {
-    const res = await request(app).get(`/users/details/${NON_EXISTENT_USER_ID}`);
+    const res = await request(app).get(/users/details/${NON_EXISTENT_USER_ID});
 
-    console.log(`GET /users/details/${NON_EXISTENT_USER_ID} Response Status:`, res.statusCode);
-    console.log(`GET /users/details/${NON_EXISTENT_USER_ID} Response Body:`, res.body);
+    console.log(GET /users/details/${NON_EXISTENT_USER_ID} Response Status:, res.statusCode);
+    console.log(GET /users/details/${NON_EXISTENT_USER_ID} Response Body:, res.body);
 
     // Assertions
     expect(res.statusCode).toBe(404);
@@ -67,10 +68,10 @@ describe('✅ TEST Get User By ID (GET /users/details/:id)', () => {
   });
 
   it('❌ Should return 500 Internal Server Error for an invalid ID format', async () => {
-    const res = await request(app).get(`/users/details/${INVALID_FORMAT_USER_ID}`);
+    const res = await request(app).get(/users/details/${INVALID_FORMAT_USER_ID});
 
-    console.log(`GET /users/details/${INVALID_FORMAT_USER_ID} Response Status:`, res.statusCode);
-    console.log(`GET /users/details/${INVALID_FORMAT_USER_ID} Response Body:`, res.body);
+    console.log(GET /users/details/${INVALID_FORMAT_USER_ID} Response Status:, res.statusCode);
+    console.log(GET /users/details/${INVALID_FORMAT_USER_ID} Response Body:, res.body);
 
     // Assertions
     expect(res.statusCode).toBe(500);

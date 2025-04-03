@@ -1,3 +1,4 @@
+//user-signin.test.js
 const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../app'); // Ton app.js complet
@@ -18,8 +19,8 @@ describe('✅ TEST SIGN IN SUR DONNEES EXISTANTES', () => {
 
   it('✅ Devrait se connecter avec un utilisateur existant', async () => {
     const res = await request(app).post('/users/login').send({
-      email: "carrefour@gmail.com", // Met ton email existant ici
-      password: "carrefour"        // Met ton mot de passe correspondant
+      email: "dhia@gmail.com", // Met ton email existant ici
+      password: "Dhiadhaw1234@"        // Met ton mot de passe correspondant
     });
 
     console.log(res.body); // 🔹 Pour voir la réponse complète dans la console
@@ -33,8 +34,8 @@ describe('✅ TEST SIGN IN SUR DONNEES EXISTANTES', () => {
 
   it('❌ Devrait échouer avec un mauvais mot de passe pour cet email', async () => {
     const res = await request(app).post('/users/login').send({
-      email: "carrefour@gmail.com", // Même email
-      password: "WrongPassword" // Mauvais mot de passe
+      email: "dhia@gmail.com", // Même email
+      password: "45454" // Mauvais mot de passe
     });
 
     console.log(res.body); // Pour voir la réponse complète dans la console
